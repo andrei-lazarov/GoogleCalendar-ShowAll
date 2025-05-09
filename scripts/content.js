@@ -1,11 +1,27 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     // Your JavaScript code goes here
-//     console.log('DOM is fully loaded and parsed!');
+function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
 
-function ShowAllAction() {
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
+
+async function ShowAllAction() {
     // toggle all
 
-    const parent = document.querySelector('div[aria-label="My calendars"]');
+    const parent = await waitForElm('div[aria-label="My calendars"]');
     if (!parent) {
         console.warn("Parent element with aria-label 'My calendars' not found.");
         return;
@@ -18,8 +34,6 @@ function ShowAllAction() {
     }
     targets.forEach(el => el.click());
 }
-
-console.log('Hello');
 
 const ShowAllButton = document.createElement("button");
 ShowAllButton.type = 'button';
@@ -40,4 +54,3 @@ if (MyCalendarsButton && MyCalendarsButton.parentElement) {
 } else {
     console.error("Could not find the 'My calendars' button or its parent to insert 'Toggle all' button.");
 }
-// });
