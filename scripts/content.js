@@ -20,19 +20,31 @@ function waitForElm(selector) {
 
 async function ShowAllAction() {
     // toggle all
-
-    const parent = await waitForElm('div[aria-label="My calendars"]');
-    if (!parent) {
+    const parent1 = await waitForElm('div[aria-label="My calendars"]');
+    if (!parent1) {
         console.warn("Parent element with aria-label 'My calendars' not found.");
         return;
     }
 
-    const targets = parent.querySelectorAll('li > div');
-    if (targets.length === 0) {
+    const targets1 = parent1.querySelectorAll('li > div');
+    if (targets1.length === 0) {
         console.warn("No target elements found within the parent.");
         return;
     }
-    targets.forEach(el => el.click());
+    targets1.forEach(el => el.click());
+
+    const parent2 = await waitForElm('div[aria-label="Other calendars"]');
+    if (!parent2) {
+        console.warn("Parent element with aria-label 'Other calendars' not found.");
+        return;
+    }
+
+    const targets2 = parent2.querySelectorAll('li > div');
+    if (targets2.length === 0) {
+        console.warn("No target elements found within the parent.");
+        return;
+    }
+    targets2.forEach(el => el.click());
 }
 
 const ShowAllButton = document.createElement("button");
