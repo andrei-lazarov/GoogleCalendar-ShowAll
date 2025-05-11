@@ -1,4 +1,8 @@
-function waitForElm(selector) {
+let MyCalendarsContainer;
+let OtherCalendarsContainer;
+
+function waitForElement(selector) {
+    // console.log("waiting for " + selector);
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
             return resolve(document.querySelector(selector));
@@ -18,51 +22,63 @@ function waitForElm(selector) {
     });
 }
 
-async function ShowAllAction() {
-    // toggle all
-    const parent1 = await waitForElm('div[aria-label="My calendars"]');
-    if (!parent1) {
-        console.warn("Parent element with aria-label 'My calendars' not found.");
+async function findCalendarsContainers() {
+    // console.log("looking for containers");
+    MyCalendarsContainer = await waitForElement('div[aria-label="My calendars"]');
+    if (!MyCalendarsContainer) {
+        console.warn("MyCalendarsContainer not found.");
         return;
     }
 
-    const targets1 = parent1.querySelectorAll('li > div');
-    if (targets1.length === 0) {
-        console.warn("No target elements found within the parent.");
+    OtherCalendarsContainer = await waitForElement('div[aria-label="Other calendars"]');
+    if (!OtherCalendarsContainer) {
+        console.warn("OtherCalendarsContainer not found.");
         return;
     }
-    targets1.forEach(el => el.click());
-
-    const parent2 = await waitForElm('div[aria-label="Other calendars"]');
-    if (!parent2) {
-        console.warn("Parent element with aria-label 'Other calendars' not found.");
-        return;
-    }
-
-    const targets2 = parent2.querySelectorAll('li > div');
-    if (targets2.length === 0) {
-        console.warn("No target elements found within the parent.");
-        return;
-    }
-    targets2.forEach(el => el.click());
 }
 
-const ShowAllButton = document.createElement("button");
-ShowAllButton.type = 'button';
-ShowAllButton.textContent = 'Toggle all';
-//ShowAllButton.onclick = ShowAllAction;
-ShowAllButton.addEventListener('click', ShowAllAction);
-
-const buttons = document.querySelectorAll('button');
-let MyCalendarsButton = null;
-for (const button of buttons) {
-    if (button.textContent.includes('My calendars')) {
-        MyCalendarsButton = button;
-        break;
+async function ToggleAll() {
+    // console.log("looking for my calendars");
+    const MyCalendars = MyCalendarsContainer.querySelectorAll('li > div');
+    if (MyCalendars.length === 0) {
+        console.warn("No calendars found within MyCalendarsContainer.");
+        return;
     }
+
+    // console.log("looking for other calendars");
+    const OtherCalendars = OtherCalendarsContainer.querySelectorAll('li > div');
+    if (OtherCalendars.length === 0) {
+        console.warn("No calendars found within OtherCalendarsContainer.");
+        return;
+    }
+
+    // console.log("toggling all");
+    MyCalendars.forEach(el => el.click());
+    OtherCalendars.forEach(el => el.click());
 }
-if (MyCalendarsButton && MyCalendarsButton.parentElement) {
-    MyCalendarsButton.parentElement.parentElement.parentElement.parentElement.insertAdjacentElement("afterbegin", ShowAllButton);
-} else {
-    console.error("Could not find the 'My calendars' button or its parent to insert 'Toggle all' button.");
+
+async function createButtons() {
+    // console.log("creating buttons");
+
+    const ToggleAllButton = document.createElement("button");
+    ToggleAllButton.type = 'button';
+    ToggleAllButton.textContent = 'Toggle all';
+    ToggleAllButton.id = 'ToggleAllButton';
+    ToggleAllButton.addEventListener('click', ToggleAll);
+
+    const ButtonsLocation = MyCalendarsContainer.parentElement.parentElement.parentElement.parentElement.parentElement;
+    if (ButtonsLocation)
+        ButtonsLocation.insertAdjacentElement("afterbegin", ToggleAllButton);
+    else
+        console.warn("Could not place buttons");
 }
+
+async function start() {
+    // console.log('waiting');
+    await findCalendarsContainers();
+    // console.log('found');
+    await createButtons();
+
+}
+
+start();
