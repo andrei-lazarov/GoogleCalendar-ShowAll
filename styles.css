@@ -3,3 +3,74 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.extension-toggle-button {
+    background: none;
+
+    color: var(--gm3-sys-color-on-surface);
+    position: relative;
+    text-align: center;
+    font-size: var(--gm3-button-outlined-label-text-size, .875rem);
+    font-family: var(--gm3-button-outlined-label-text-font, "Google Sans", Roboto, Arial, sans-serif);
+    font-weight: var(--gm3-button-outlined-label-text-weight, 500);
+    letter-spacing: var(--gm3-button-outlined-label-text-tracking, 0);
+    -webkit-text-decoration: var(--gm3-button-outlined-label-text-decoration, none);
+    text-decoration: var(--gm3-button-outlined-label-text-decoration, none);
+    font-variation-settings: var(--gm3-button-outlined-label-text-font-variation-settings, initial);
+
+    border-style: solid;
+    border-width: var(--gm3-button-outlined-outline-width, 1px);
+    border-color: var(--gm3-button-outlined-outline-color, var(--gm3-sys-color-outline, #747775));
+    border-radius: 9999px;
+
+    padding-block: 5px;
+    padding-inline: 8px;
+
+}
+
+@keyframes outline-pulse {
+    0% {
+        outline-width: 3px;
+    }
+
+    25% {
+        outline-width: 8px;
+    }
+
+    45% {
+        outline-width: 7px;
+    }
+
+    60% {
+        outline-width: 6px;
+    }
+
+    75% {
+        outline-width: 5px;
+    }
+
+    90% {
+        outline-width: 4px;
+    }
+
+    100% {
+        outline-width: 3px;
+    }
+}
+
+.extension-toggle-button:focus-visible {
+    outline-style: solid;
+    outline-width: medium;
+    outline-color: var(--gm3-sys-color-secondary);
+    outline-offset: 1px;
+    animation: outline-pulse 0.4s ease;
+}
+
+.extension-toggle-button:hover {
+    background-color: rgba(138, 139, 140, 0.15);
+    cursor: pointer;
+}
+
+.extension-toggle-button:active {
+    background-color: rgba(138, 139, 140, 0.3);
+}

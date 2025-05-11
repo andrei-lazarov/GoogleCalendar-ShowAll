@@ -74,6 +74,7 @@ async function createButtons() {
         btn.id = id;
         btn.textContent = text;
         btn.addEventListener('click', onClick);
+        btn.className = 'extension-toggle-button';
         return btn;
     };
 
