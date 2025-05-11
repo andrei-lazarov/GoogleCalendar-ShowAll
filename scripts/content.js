@@ -57,18 +57,40 @@ async function ToggleAll() {
     OtherCalendars.forEach(el => el.click());
 }
 
+async function ShowAll() {
+
+}
+
+async function HideAll() {
+
+}
+
 async function createButtons() {
     // console.log("creating buttons");
 
-    const ToggleAllButton = document.createElement("button");
-    ToggleAllButton.type = 'button';
-    ToggleAllButton.textContent = 'Toggle all';
-    ToggleAllButton.id = 'ToggleAllButton';
-    ToggleAllButton.addEventListener('click', ToggleAll);
+    const createButton = (id, text, onClick) => {
+        const btn = document.createElement("button");
+        btn.type = 'button';
+        btn.id = id;
+        btn.textContent = text;
+        btn.addEventListener('click', onClick);
+        return btn;
+    };
+
+    const TheButtons = [
+        createButton('ToggleAllButton', 'Toggle all', ToggleAll),
+        createButton('ShowAllButton', 'Show all', ShowAll),
+        createButton('HideAllButton', 'Hide all', HideAll)
+    ];
+
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.id = 'buttonsContainer';
+    buttonsContainer.style.display = 'flex';
+    TheButtons.forEach(btn => buttonsContainer.insertAdjacentElement("beforeend", btn));
 
     const ButtonsLocation = MyCalendarsContainer.parentElement.parentElement.parentElement.parentElement.parentElement;
     if (ButtonsLocation)
-        ButtonsLocation.insertAdjacentElement("afterbegin", ToggleAllButton);
+        ButtonsLocation.insertAdjacentElement("afterbegin", buttonsContainer);
     else
         console.warn("Could not place buttons");
 }
