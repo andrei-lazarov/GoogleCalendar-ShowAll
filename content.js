@@ -85,7 +85,6 @@ async function createButtons() {
 
     const buttonsContainer = document.createElement("div");
     buttonsContainer.id = 'buttonsContainer';
-    buttonsContainer.style.display = 'flex';
     TheButtons.forEach(btn => buttonsContainer.insertAdjacentElement("beforeend", btn));
 
     const ButtonsLocation = MyCalendarsContainer.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -100,7 +99,6 @@ async function start() {
     await findCalendarsContainers();
     // console.log('found');
     await createButtons();
-
 }
 
 start();
