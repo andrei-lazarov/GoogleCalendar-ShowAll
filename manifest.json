@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Google Calendar Show All",
-    "version": "0.2",
+    "version": "0.3",
     "description": "Add a button to show/hide all calendars in Google Calendar",
     "icons": {
         "16": "images/icon-16.png",

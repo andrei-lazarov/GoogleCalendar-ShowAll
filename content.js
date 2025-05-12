@@ -23,13 +23,14 @@ function waitForElement(selector) {
 }
 
 async function findCalendarsContainers() {
-    // console.log("looking for containers");
+    // console.log("looking for MyCalendarsContainer");
     MyCalendarsContainer = await waitForElement('div[aria-label="My calendars"]');
     if (!MyCalendarsContainer) {
         console.warn("MyCalendarsContainer not found.");
         return;
     }
 
+    // console.log("looking for OtherCalendarsContainer");
     OtherCalendarsContainer = await waitForElement('div[aria-label="Other calendars"]');
     if (!OtherCalendarsContainer) {
         console.warn("OtherCalendarsContainer not found.");
@@ -37,7 +38,15 @@ async function findCalendarsContainers() {
     }
 }
 
-async function ToggleAll() {
+function isCalendarEnabled(calendar) {
+    // inspect the checkbox and see if it has the tick
+    // right now it looks like this KGC9Kd-MPu53c-OWXEXe-gk6SMd
+
+    const regex = /^[a-zA-Z0-9]{6}(-[a-zA-Z0-9]{6}){3}$/;
+    return Array.from(calendar.querySelector('div > div > div > div').classList).some(cls => regex.test(cls));
+}
+
+async function switchAll(switchType) {
     // console.log("looking for my calendars");
     const MyCalendars = MyCalendarsContainer.querySelectorAll('li > div');
     if (MyCalendars.length === 0) {
@@ -52,17 +61,24 @@ async function ToggleAll() {
         return;
     }
 
-    // console.log("toggling all");
-    MyCalendars.forEach(el => el.click());
-    OtherCalendars.forEach(el => el.click());
-}
+    // console.log("switching calendars");
+    if (switchType === 'Show') {
+        MyCalendars.forEach(el => { if (!isCalendarEnabled(el)) { el.click() } });
+        OtherCalendars.forEach(el => { if (!isCalendarEnabled(el)) { el.click() } });
+        return;
+    }
 
-async function ShowAll() {
+    if (switchType === 'Hide') {
+        MyCalendars.forEach(el => { if (isCalendarEnabled(el)) { el.click() } });
+        OtherCalendars.forEach(el => { if (isCalendarEnabled(el)) { el.click() } });
+        return;
+    }
 
-}
-
-async function HideAll() {
-
+    if (switchType === 'Toggle') {
+        MyCalendars.forEach(el => el.click());
+        OtherCalendars.forEach(el => el.click());
+        return;
+    }
 }
 
 async function createButtons() {
@@ -79,26 +95,24 @@ async function createButtons() {
     };
 
     const TheButtons = [
-        createButton('ToggleAllButton', 'Toggle all', ToggleAll),
-        createButton('ShowAllButton', 'Show all', ShowAll),
-        createButton('HideAllButton', 'Hide all', HideAll)
+        createButton('ShowAllButton', 'Show all', () => switchAll('Show')),
+        createButton('HideAllButton', 'Hide all', () => switchAll('Hide')),
+        createButton('ToggleAllButton', 'Toggle all', () => switchAll('Toggle'))
     ];
 
-    const buttonsContainer = document.createElement("div");
-    buttonsContainer.id = 'buttonsContainer';
-    TheButtons.forEach(btn => buttonsContainer.insertAdjacentElement("beforeend", btn));
+    const ButtonsContainer = document.createElement("div");
+    ButtonsContainer.id = 'ButtonsContainer';
+    TheButtons.forEach(btn => ButtonsContainer.insertAdjacentElement("beforeend", btn));
 
     const ButtonsLocation = MyCalendarsContainer.parentElement.parentElement.parentElement.parentElement.parentElement;
     if (ButtonsLocation)
-        ButtonsLocation.insertAdjacentElement("afterbegin", buttonsContainer);
+        ButtonsLocation.insertAdjacentElement("afterbegin", ButtonsContainer);
     else
         console.warn("Could not place buttons");
 }
 
 async function start() {
-    // console.log('waiting');
     await findCalendarsContainers();
-    // console.log('found');
     await createButtons();
 }
 
