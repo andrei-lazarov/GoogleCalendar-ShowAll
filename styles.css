@@ -1,10 +1,10 @@
-#buttonsContainer {
+#GCSA-ButtonsContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.extension-toggle-button {
+.GCSA-Button {
     background: none;
 
     color: var(--gm3-sys-color-on-surface);
@@ -28,7 +28,7 @@
 
 }
 
-@keyframes outline-pulse {
+@keyframes GCSA-outlinePulse {
     0% {
         outline-width: 3px;
     }
@@ -58,19 +58,19 @@
     }
 }
 
-.extension-toggle-button:focus-visible {
+.GCSA-Button:focus-visible {
     outline-style: solid;
     outline-width: medium;
     outline-color: var(--gm3-sys-color-secondary);
     outline-offset: 1px;
-    animation: outline-pulse 0.4s ease;
+    animation: GCSA-outlinePulse 0.4s ease;
 }
 
-.extension-toggle-button:hover {
+.GCSA-Button:hover {
     background-color: rgba(138, 139, 140, 0.15);
     cursor: pointer;
 }
 
-.extension-toggle-button:active {
+.GCSA-Button:active {
     background-color: rgba(138, 139, 140, 0.3);
 }

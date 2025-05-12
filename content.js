@@ -90,7 +90,7 @@ async function createButtons() {
         btn.id = id;
         btn.textContent = text;
         btn.addEventListener('click', onClick);
-        btn.className = 'extension-toggle-button';
+        btn.className = 'GCSA-Button';
         return btn;
     };
 
@@ -101,7 +101,7 @@ async function createButtons() {
     ];
 
     const ButtonsContainer = document.createElement("div");
-    ButtonsContainer.id = 'ButtonsContainer';
+    ButtonsContainer.id = 'GCSA-ButtonsContainer';
     TheButtons.forEach(btn => ButtonsContainer.insertAdjacentElement("beforeend", btn));
 
     const ButtonsLocation = MyCalendarsContainer.parentElement.parentElement.parentElement.parentElement.parentElement;
