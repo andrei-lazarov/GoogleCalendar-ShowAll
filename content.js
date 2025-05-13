@@ -116,4 +116,19 @@ async function start() {
     await createButtons();
 }
 
-start();
+let lastUrl = location.href;
+
+new MutationObserver(() => {
+    if (location.href !== lastUrl) {
+        if (lastUrl.includes('settings') && !location.href.includes('settings')) {
+            // console.log("URL changed from settings to calendar");
+            start();
+        }
+
+        lastUrl = location.href;
+    }
+}).observe(document, { subtree: true, childList: true });
+
+
+if (!location.href.includes('settings'))
+    start();

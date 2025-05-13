@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Google Calendar Show All",
-    "version": "0.3",
+    "version": "0.4",
     "description": "Add a button to show/hide all calendars in Google Calendar",
     "icons": {
         "16": "images/icon-16.png",
@@ -18,18 +18,7 @@
                 "styles.css"
             ],
             "matches": [
-                "https://calendar.google.com/calendar/u/*/r/day",
-                "https://calendar.google.com/calendar/u/*/r/day/*",
-                "https://calendar.google.com/calendar/u/*/r/week",
-                "https://calendar.google.com/calendar/u/*/r/week/*",
-                "https://calendar.google.com/calendar/u/*/r/month",
-                "https://calendar.google.com/calendar/u/*/r/month/*",
-                "https://calendar.google.com/calendar/u/*/r/year",
-                "https://calendar.google.com/calendar/u/*/r/year/*",
-                "https://calendar.google.com/calendar/u/*/r/agenda",
-                "https://calendar.google.com/calendar/u/*/r/agenda/*",
-                "https://calendar.google.com/calendar/u/*/r/customday",
-                "https://calendar.google.com/calendar/u/*/r/customday/*"
+                "https://calendar.google.com/calendar/*"
             ]
         }
     ]
