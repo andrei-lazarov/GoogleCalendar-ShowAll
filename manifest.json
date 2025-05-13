@@ -19,11 +19,17 @@
             ],
             "matches": [
                 "https://calendar.google.com/calendar/u/*/r/day",
+                "https://calendar.google.com/calendar/u/*/r/day/*",
                 "https://calendar.google.com/calendar/u/*/r/week",
+                "https://calendar.google.com/calendar/u/*/r/week/*",
                 "https://calendar.google.com/calendar/u/*/r/month",
+                "https://calendar.google.com/calendar/u/*/r/month/*",
                 "https://calendar.google.com/calendar/u/*/r/year",
+                "https://calendar.google.com/calendar/u/*/r/year/*",
                 "https://calendar.google.com/calendar/u/*/r/agenda",
-                "https://calendar.google.com/calendar/u/*/r/customday"
+                "https://calendar.google.com/calendar/u/*/r/agenda/*",
+                "https://calendar.google.com/calendar/u/*/r/customday",
+                "https://calendar.google.com/calendar/u/*/r/customday/*"
             ]
         }
     ]
