@@ -1,5 +1,7 @@
 # Things to do:
-- icon
+- pretty readme
+- higher res icon
 - prevent button spam
 - more languages
+- better animation on click
 - animation on ENTER
