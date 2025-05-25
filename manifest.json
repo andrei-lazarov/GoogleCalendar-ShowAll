@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Show and Hide all calendars buttons for Google Calendar™",
-    "version": "0.7.1",
+    "version": "0.8",
     "description": "Quickly show, hide, or toggle all calendars in Google Calendar.",
     "icons": {
         "16": "images/icon-16.png",

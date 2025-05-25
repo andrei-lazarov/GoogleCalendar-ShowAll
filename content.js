@@ -24,14 +24,14 @@ function waitForElement(selector) {
 
 async function findCalendarsContainers() {
     // console.log("looking for MyCalendarsContainer");
-    MyCalendarsContainer = await waitForElement('div[aria-label="My calendars"]');
+    MyCalendarsContainer = await waitForElement('div[role="list"]');
     if (!MyCalendarsContainer) {
         console.warn("MyCalendarsContainer not found.");
         return;
     }
 
     // console.log("looking for OtherCalendarsContainer");
-    OtherCalendarsContainer = await waitForElement('div[aria-label="Other calendars"]');
+    OtherCalendarsContainer = document.querySelectorAll('div[role="list"]')[1];
     if (!OtherCalendarsContainer) {
         console.warn("OtherCalendarsContainer not found.");
         return;
