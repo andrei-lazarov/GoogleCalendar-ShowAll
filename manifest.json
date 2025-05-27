@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Show and Hide all calendars buttons for Google Calendar™",
-    "version": "0.8",
+    "name": "Google Calendar Show All",
+    "version": "0.8.1",
     "description": "Quickly show, hide, or toggle all calendars in Google Calendar.",
     "icons": {
         "16": "images/icon-16.png",
@@ -21,5 +21,11 @@
                 "https://calendar.google.com/calendar/*"
             ]
         }
-    ]
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "google-calendar-show-all@andrei-lazarov.com",
+            "strict_min_version": "58.0"
+        }
+    }
 }
