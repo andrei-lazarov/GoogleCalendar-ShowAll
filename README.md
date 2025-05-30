@@ -1,4 +1,4 @@
-# ![image](images/icon-32.png) Show and Hide all calendars buttons for Google Calendar™ 
+# ![image](extension/images/icon-32.png) Show and Hide all calendars buttons for Google Calendar™ 
 
 Free browser extension that adds 3 buttons to Google Calendar:  
 **Show all** / **Hide all** / **Toggle all** (calendars)
@@ -14,6 +14,6 @@ Free browser extension that adds 3 buttons to Google Calendar:
 ## Demonstration
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./images/demo_dark.gif">
-  <img alt="Video demonstration" src="./images/demo_light.gif">
+  <source media="(prefers-color-scheme: dark)" srcset="./extras/demo_dark.gif">
+  <img alt="Video demonstration" src="./extras/demo_light.gif">
 </picture>
