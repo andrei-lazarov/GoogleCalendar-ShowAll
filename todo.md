@@ -1,7 +1,6 @@
 # Things to do:
-- pretty readme
-- higher res icon
+- more languages for the buttons!
+- check if it works on workspace accounts!
 - prevent button spam
-- more languages
-- better animation on click
-- animation on ENTER
+- pretty store cover
+- higher res icon
