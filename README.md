@@ -7,7 +7,7 @@ Free browser extension that adds 3 buttons to Google Calendar:
 | Source | Version |
 | -------- | ------- |
 | [Chrome](https://chromewebstore.google.com/detail/show-and-hide-all-calenda/hpailgnhcndggnllpgahjehfcalnefnj) | v0.8 |
-| Edge | soon |
+| [Edge](https://microsoftedge.microsoft.com/addons/detail/show-and-hide-all-calenda/mapoobcjgdcahceldnipeickphmlpmad) | v0.8 |
 | Firefox | soon |
 | [GitHub](https://github.com/andrei-lazarov/GoogleCalendar-ShowAll/releases/latest) (load unpacked) | v0.8
 
