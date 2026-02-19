@@ -17,3 +17,6 @@ Free browser extension that adds 3 buttons to Google Calendar:
   <source media="(prefers-color-scheme: dark)" srcset="./extras/demo_dark.gif">
   <img alt="Video demonstration" src="./extras/demo_light.gif">
 </picture>
+
+## Support
+If you like my work, consider leaving a tip 🙂 https://paypal.me/lazarovandrei 
